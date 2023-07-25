@@ -1,5 +1,5 @@
 var b = document.getElementById('io');
-
+let sp=new SpeechSynthesisUtterance()
 Notification.requestPermission().then(p=>{
      if(p=='granted'){
         new Notification('Dotcom',{
@@ -12,22 +12,21 @@ Notification.requestPermission().then(p=>{
         }
      }
 })
-
-b.addEventListener('click',function () {
-    b.style.border="8px white soild;"
-})
 document.getElementById("btn").addEventListener('click',function () {
-         if(b.value=='google'){
+    if(b.value=='google'){
         location.href ='https://www.google.com'
         new Notification('Dotcom',{
         body:'Google'
         })
+        sp.text="go to Google "
+        window.speechSynthesis.speak(sp)
     }
 		
     
     if(b.value=='facebook'){
         location.href ='https://www.facebook.com'
-        
+        sp.text='go to facebook'
+        window.speechSynthesis.speak(sp);
         new Notification('Dotcom',{
             body:'Facebook  '
         })
@@ -36,6 +35,14 @@ document.getElementById("btn").addEventListener('click',function () {
         location.href="https://www.instragram.com"
         new Notification('Dotcom',{
             body:'Instragram'
+        })
+        sp.text='go to instragram'
+        window.speechSynthesis.speak(sp)
+    }
+    if(b.value=='gmail'){
+        location.href ='https://mail.google.com/mail/u/0/#inbox'
+        new Notification('Dotcom',{
+        body:'Gmail'
         })
     }
 })
